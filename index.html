@@ -286,6 +286,213 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/实习项目-远程文件的自动下载.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Shu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Soda小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/实习项目-远程文件的自动下载.html" itemprop="url">实习项目（1）:远程文件的自动下载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T10:39:14+08:00">
+                2018-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实习项目/" itemprop="url" rel="index">
+                    <span itemprop="name">实习项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/实习项目-远程文件的自动下载.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/实习项目-远程文件的自动下载.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/实习项目-远程文件的自动下载.html" class="leancloud_visitors" data-flag-title="实习项目（1）:远程文件的自动下载">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  321
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="项目目的"><a href="#项目目的" class="headerlink" title="项目目的"></a>项目目的</h1><p> 基于lftp批量下载工具及crontab定时工具，实现远程服务器数据的自动下载更新</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>系统：Linux<br>软件：</p>
+<ul>
+<li>lftp</li>
+<li>crontab</li>
+</ul>
+<h2 id="lftp的安装"><a href="#lftp的安装" class="headerlink" title="lftp的安装"></a>lftp的安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar jvxf lftp-3.5.9.tar.bz2</span><br><span class="line"><span class="built_in">cd</span>  lftp-4.8.2</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>如果是非管理员用户，无法安装到默认的usr，建议修改从</p>
+<h2 id="lftp的使用"><a href="#lftp的使用" class="headerlink" title="lftp的使用"></a>lftp的使用</h2><h3 id="交互命令"><a href="#交互命令" class="headerlink" title="交互命令"></a>交互命令</h3><p>虽然最终我们是通过脚本命令来实现</p>
+<h3 id="脚本命令"><a href="#脚本命令" class="headerlink" title="脚本命令"></a>脚本命令</h3><p>lftp 支持编辑下载脚本auto_download.sh</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim auto_download.sh</span><br></pre></td></tr></table></figure>
+<p>主要通过lftp命令实现下载<br>其中host为待下载文件主机地址，User为用户名，PASSWD为密码</p>
+<p><strong>华丰气象数据下载</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#usr/bin/bash</span></span><br><span class="line">HOST=www.gd12121.com</span><br><span class="line">USER=elec</span><br><span class="line">PASSWD=elec</span><br><span class="line"></span><br><span class="line">/home/szhou/usr/<span class="built_in">local</span>/bin/lftp&lt;&lt;EOF</span><br><span class="line"></span><br><span class="line">open sftp://<span class="variable">$HOST</span></span><br><span class="line">user <span class="variable">$USER</span> <span class="variable">$PASSWD</span></span><br><span class="line"><span class="built_in">cd</span> MeteorologicalInfo_GDEPEI</span><br><span class="line">mirror -a --only-newer --only-missing --parallel=20 dmsk </span><br><span class="line"><span class="built_in">bye</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"下载完成"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>气象台监测数据下载</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#usr/bin/bash</span></span><br><span class="line">HOST=39.107.157.207</span><br><span class="line">USER=gddw</span><br><span class="line">PASSWD=gddw@123</span><br><span class="line"></span><br><span class="line">/home/szhou/usr/<span class="built_in">local</span>/bin/lftp&lt;&lt;EOF</span><br><span class="line">open sftp://<span class="variable">$HOST</span></span><br><span class="line">user <span class="variable">$USER</span> <span class="variable">$PASSWD</span></span><br><span class="line">mirror -a --only-newer --only-missing --parallel=5 prediction  </span><br><span class="line"><span class="built_in">bye</span></span><br><span class="line">EOF</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"下载完成"</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/30 * * * * <span class="built_in">cd</span> /home/szhou/pro/gddw/py_HF_TF/data;./download2.sh;<span class="built_in">echo</span> <span class="string">"<span class="variable">$(date +"%Y%m%d%H%M")</span>"</span> &gt;&gt;<span class="string">"<span class="variable">$(date +"%Y-%m")</span>_dmsk.log"</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/hexo一站式使用手册.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,8 +524,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-26T22:09:35+08:00">
-                2018-08-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T10:27:57+08:00">
+                2018-08-27
               </time>
             
 
@@ -370,7 +577,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,160
+                  2,161
                 </span>
               
 
@@ -664,6 +871,208 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/sodo读书笔记-04.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Shu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Soda小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/sodo读书笔记-04.html" itemprop="url">sodo读书笔记-04</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-25T21:03:25+08:00">
+                2018-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/sodo读书笔记-04.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/sodo读书笔记-04.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/sodo读书笔记-04.html" class="leancloud_visitors" data-flag-title="sodo读书笔记-04">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  11,349
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  38
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="20180826-人生的智慧"><a href="#20180826-人生的智慧" class="headerlink" title="20180826 人生的智慧"></a>20180826 人生的智慧</h1><p><br><br><img src="/2018Kindle读书笔记/人生的智慧.jpg" width="40%" height="40%" div="" align="center"><br><br></p>
+<h2 id="图书简介"><a href="#图书简介" class="headerlink" title="图书简介"></a>图书简介</h2><p><strong>作者</strong>：叔本华</p>
+<p><strong>内容简介</strong>:</p>
+<p>《人生的智慧》是德国思想家叔本华以简单的语言，所写成的一部并不简单的书，这书为普通大众而写，阐述生活的本质，及如何在生活中获得幸福。这书名本身就已经是够吸引人的了。我们作为万物之灵、竭尽全力在生活中寻觅幸福的人类，面对伟大思想家这部深入浅出教导如何获得幸福的书，又有谁会不感兴趣呢？… from douban</p>
+<p><strong>推荐指数</strong>: 5星加,很短的文章，却是参不完的人生哲学。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/sodo读书笔记-04.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/python1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -850,6 +1259,612 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/sodo读书笔记-03.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Shu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Soda小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/sodo读书笔记-03.html" itemprop="url">sodo读书笔记-04</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T21:03:25+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/sodo读书笔记-03.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/sodo读书笔记-03.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/sodo读书笔记-03.html" class="leancloud_visitors" data-flag-title="sodo读书笔记-04">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,162
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="20180823-《鱼河岸小店》"><a href="#20180823-《鱼河岸小店》" class="headerlink" title="20180823 《鱼河岸小店》"></a>20180823 《鱼河岸小店》</h1><p><br><br><img src="/2018Kindle读书笔记/鱼河岸小店.jpg" width="40%" height="40%" div="" align="center"><br><br></p>
+<h2 id="图书简介"><a href="#图书简介" class="headerlink" title="图书简介"></a>图书简介</h2><p><strong>作者</strong>：西加柰子</p>
+<p><strong>内容简介</strong>:</p>
+<p>自称作家的男友在留下“我回故乡死一死”的字条后就消失了。肉子带着女儿喜久子来到了北方的渔港，却发现那里根本不是男人的故乡。好心的烤肉店老板收留了母女俩，唯一的要求就是不许坏肚子。在鱼河岸生活的日子里，肉子做出的各种傻事总是让喜久子感到羞耻，她不想活成肉子的样子。那个小时候无意间发现的秘密，也一直困扰着这个只有十几岁的少女。没有一个大人是成熟而完整的，即使这样，大家的生活依然在不断继续… from douban</p>
+<p><strong>推荐指数</strong>: 4星半,平凡简单的故事，却又治愈人心的力量</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/sodo读书笔记-03.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/soda读书笔记-02.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Shu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Soda小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/soda读书笔记-02.html" itemprop="url">sodo读书笔记-02</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T21:03:25+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/soda读书笔记-02.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/soda读书笔记-02.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/soda读书笔记-02.html" class="leancloud_visitors" data-flag-title="sodo读书笔记-02">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,060
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="20180816-《虚无的十字架》"><a href="#20180816-《虚无的十字架》" class="headerlink" title="20180816 《虚无的十字架》"></a>20180816 《虚无的十字架》</h1><p><br><br><img src="/2018Kindle读书笔记/虚无的十字架.jpg" width="40%" height="40%" div="" align="center"><br><br></p>
+<h2 id="图书简介"><a href="#图书简介" class="headerlink" title="图书简介"></a>图书简介</h2><p><strong>作者</strong>：东野圭吾</p>
+<p><strong>内容简介</strong>：</p>
+<p>所谓的“罪”与“罚”究竟本质为何？是让犯人听到自己的死刑宣判而感到解脱？还是，让他重返自由社会、但用尽一生赎罪？爱女被杀害的道正与小夜子夫妻在凶手被宣判死刑后，感到人生失去目标，即使凶手伏法，女儿也无法再复活的痛苦，终使道正与小夜子分手。某日，道正接到刑警致电，带来令人震惊的消息──小夜子被杀了。虽然不久后凶手自 from douban</p>
+<p><strong>推荐指数</strong>：3星半，选题不错，论据略薄弱，稍显啰嗦，最后的大谜底让人挺失望。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/soda读书笔记-02.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/soda读书笔记-01.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Shu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Soda小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/soda读书笔记-01.html" itemprop="url">soda读书笔记-01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T21:03:25+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/soda读书笔记-01.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/soda读书笔记-01.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/soda读书笔记-01.html" class="leancloud_visitors" data-flag-title="soda读书笔记-01">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,377
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="20180809-《姐姐的守护者》"><a href="#20180809-《姐姐的守护者》" class="headerlink" title="20180809 《姐姐的守护者》"></a>20180809 《姐姐的守护者》</h1><p><br><br><img src="/2018Kindle读书笔记/姐姐的守护者.jpg" width="40%" height="40%" div="" align="center"><br><br></p>
+<h2 id="图书简介"><a href="#图书简介" class="headerlink" title="图书简介"></a>图书简介</h2><p><strong>作者</strong>：朱迪.皮考特</p>
+<p><strong>内容简介</strong>:</p>
+<p>安娜的姐姐凯特两岁时罹患严重的急性早幼粒细胞白血病，安娜的父母为了给凯特治病，通过先进的基因技术孕育并生下了与凯特的基因完美配型的小女儿安娜。从第一管脐带血开始，十三年来，安娜不断地向凯特捐献出脐带血、白血球、干细胞、骨髓……现在，凯特的肾功能衰竭，父母要求安娜捐献一个肾脏给姐姐。无法忍受再被当成药量的安娜决定反击她的父母。<br>安娜在报上看到律师坎贝尔的信息，她卖掉爸爸送给自己的金项链，在哥哥杰西的帮助下找到律师事务所，请求坎贝尔做她的律师，她要控告自己的父母，控告他们夺走她的身体使用权。 from douban</p>
+<p><strong>推荐指数</strong>：4星,讨论了很多尖锐的社会问题，诱发人去思考，作者的文笔也很细腻，唯一遗憾结尾太过狗血。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/soda读书笔记-01.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -900,7 +1915,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -911,7 +1926,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -922,7 +1937,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
