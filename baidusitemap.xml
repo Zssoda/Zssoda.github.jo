@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>www.sunsoda.fun/hexo%E6%95%99%E7%A8%8B03.html</loc>
+    <lastmod>2018-08-28T02:43:50.355Z</lastmod>
+    <data>
+        <display>
+        <title>hexo教程03</title>
+        <pubTime>2018-08-28T01:21:47.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="www.sunsoda.fun/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>www.sunsoda.fun/hexo%E6%95%99%E7%A8%8B02-%E5%88%9B%E5%BB%BA%E6%96%B0%E5%8D%9A%E5%AE%A2.html</loc>
-    <lastmod>2018-08-27T16:01:11.257Z</lastmod>
+    <lastmod>2018-08-28T01:20:23.138Z</lastmod>
     <data>
         <display>
         <title>hexo教程02-创建新博客</title>
@@ -15,6 +35,9 @@
          
          
            
+             
+              <breadCrumb title="Hexo" url="www.sunsoda.fun/categories/Hexo/"/>
+          
         </display>
     </data>
     </url>
@@ -22,7 +45,7 @@
     
   <url>
     <loc>www.sunsoda.fun/hexo%E6%95%99%E7%A8%8B01-%E5%AE%89%E8%A3%85.html</loc>
-    <lastmod>2018-08-27T16:00:34.939Z</lastmod>
+    <lastmod>2018-08-28T01:18:39.617Z</lastmod>
     <data>
         <display>
         <title>hexo教程01-安装</title>
@@ -38,12 +61,12 @@
 
     
   <url>
-    <loc>www.sunsoda.fun/soda%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-02.html</loc>
-    <lastmod>2018-08-27T15:56:11.986Z</lastmod>
+    <loc>www.sunsoda.fun/sodo%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-03.html</loc>
+    <lastmod>2018-08-28T01:16:28.455Z</lastmod>
     <data>
         <display>
-        <title>soda读书笔记-02</title>
-        <pubTime>2018-08-16T13:03:25.000Z</pubTime>
+        <title>soda读书笔记(03):鱼河岸小店</title>
+        <pubTime>2018-08-23T13:03:25.000Z</pubTime>
         
         <tag>kindle</tag>
          
@@ -61,15 +84,59 @@
     
   <url>
     <loc>www.sunsoda.fun/sodo%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-04.html</loc>
-    <lastmod>2018-08-27T15:49:40.977Z</lastmod>
+    <lastmod>2018-08-28T01:16:21.832Z</lastmod>
     <data>
         <display>
-        <title>soda读书笔记-04</title>
+        <title>soda读书笔记(04):人生智慧</title>
         <pubTime>2018-08-25T13:03:25.000Z</pubTime>
         
         <tag>kindle</tag>
          
         <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="www.sunsoda.fun/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.sunsoda.fun/soda%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-02.html</loc>
+    <lastmod>2018-08-28T01:15:37.744Z</lastmod>
+    <data>
+        <display>
+        <title>soda读书笔记(02):虚无的十字架</title>
+        <pubTime>2018-08-16T13:03:25.000Z</pubTime>
+        
+        <tag>kindle</tag>
+         
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书笔记" url="www.sunsoda.fun/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.sunsoda.fun/soda%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-01.html</loc>
+    <lastmod>2018-08-28T01:15:26.382Z</lastmod>
+    <data>
+        <display>
+        <title>soda读书笔记(01):姐姐的守护者</title>
+        <pubTime>2018-08-09T13:03:25.000Z</pubTime>
+        
+        <tag>kindle</tag>
+         
+        <tag>读书笔记</tag>
          
          
            
@@ -92,50 +159,6 @@
         <tag>kindle</tag>
          
         <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="www.sunsoda.fun/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.sunsoda.fun/sodo%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-03.html</loc>
-    <lastmod>2018-08-27T15:49:14.925Z</lastmod>
-    <data>
-        <display>
-        <title>soda读书笔记-03</title>
-        <pubTime>2018-08-23T13:03:25.000Z</pubTime>
-        
-        <tag>kindle</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书笔记" url="www.sunsoda.fun/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>www.sunsoda.fun/soda%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-01.html</loc>
-    <lastmod>2018-08-27T15:39:09.347Z</lastmod>
-    <data>
-        <display>
-        <title>soda读书笔记-01</title>
-        <pubTime>2018-08-09T13:03:25.000Z</pubTime>
-        
-        <tag>kindle</tag>
-         
-        <tag>读书笔记</tag>
          
          
            
