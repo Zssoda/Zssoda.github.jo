@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.sunsoda.fun/"/>
-  <updated>2018-08-28T09:40:13.600Z</updated>
+  <updated>2018-08-29T02:43:34.483Z</updated>
   <id>www.sunsoda.fun/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>利用Python进行时间序列的分析及预测(1)--时间序列初识</title>
+    <link href="www.sunsoda.fun/TS%E6%97%B6%E9%97%B4%E5%88%86%E6%9E%90(1).html"/>
+    <id>www.sunsoda.fun/TS时间分析(1).html</id>
+    <published>2018-08-29T01:21:47.000Z</published>
+    <updated>2018-08-29T02:43:34.483Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong></p><p>  本篇主要根据<a href="https://trainings.analyticsvidhya.com" target="_blank" rel="noopener">Analytic Vidhya</a>上的课程<a href="https://trainings.analyticsvidhya.com/courses/course-v1:AnalyticsVidhya+TS_101+TS_term1/courseware/a869013c2e274d1c82cd2fc50e64fb2d/ac9402484c6c444192f735acae44884a/?activate_block_id=block-v1%3AAnalyticsVidhya%2BTS_101%2BTS_term1%2Btype%40sequential%2Bblock%40ac9402484c6c444192f735acae44884a" target="_blank" rel="noopener"><em>Time Series Analysis</em></a>讲义制作。这个课程主要为想要解决与时间系列预测相关问题的人设计的。深入浅出地为讲解了解决时间序列的分析及预所需的必要技能和技术，并且课程还提供足够的理论和实践材料来进一步提升技能，个人认为是非常好的学习材料，为了进一步巩固知识，因而在此整理分享。</p><p> 课程主要从以上主要三个版块:</p><ul><li>理解时间序列</li><li>数据挖掘</li><li>数据预测<br>废话少说让我们进入时间序列的世界吧！，本篇主要介绍关于TS的一些基本概念，内容如下</li></ul><ul><li>认识时间序列</li><li>时间序列的组成</li></ul><h1 id="认识时间序列"><a href="#认识时间序列" class="headerlink" title="认识时间序列"></a>认识时间序列</h1><p>在进一步学习之前，我们必须要明白一个概念。什么是“时间序列”呢？看下面两幅图,你认为哪个属于事假序列呢？<br><img src="/TS时间分析(1).html1.png"></p><p>一般来说，<strong>时间序列（Time series,TS）</strong>是指随着时间收集的数据，并且依赖于时间变化。<br>上面两个例子，我们不难看出汽车的数量是独立于时间的，因此他不算一个时间序列，但是二氧化碳含量冥想随着时间推移增加，因此它是一个时间序列。</p><blockquote><p>时间序列：一系列按照时间顺序收集的数据集合，称为时间序列。 </p></blockquote><p>时间序列在我们日常生活中运用十分广泛，大多数的商业公司要使用时间序列数据来分析下一年的销售数字，网站流量，流量，收到的电话数量等等。一个时间序列的数据可以很好的帮助我们来做预测工作。注意时间序列应当指的数据集合，而不是每一个时间点所收集都得数据</p><p>我们接下来再看几个时间序列的例子，通过这些例子，希望大家能更好地理解什么是时间序列，什么是非时间序列</p><ul><li><p>股价变动<br><img src="/TS时间分析(1).html2.jpg"></p></li><li><p>航空公司旅客人数<br><img src="/TS时间分析(1).html3.jpg"></p></li><li><p>温度变化<br><img src="/TS时间分析(1).html4.png"></p></li><li><p>旅馆游客数目<br><img src="/TS时间分析(1).html5.gif"></p></li></ul><h1 id="时间序列的组成"><a href="#时间序列的组成" class="headerlink" title="时间序列的组成"></a>时间序列的组成</h1><p>在了解了何为时间序列，我们接下来进一步认识时间序列，俩看看那时间序列重要的组成部分。</p><ul><li><strong>Trend(趋势)：</strong><br>趋势是某事物发展或变化的一般方向。所以我们看到下面这个时间序列有很明显的增长趋势，随着时间的推进，乘客数量也明显增加。<br>Example:<br><img src="/TS时间分析(1).html6.jpg"><br>上图中，红色线即代表了TS的变化趋势</li><li><strong>Sesonality(周期性部分)</strong>：<br>在上面的时间序列中，我们还注意到在一定的时间间隔内，数据出现了重复，这种特点就称为周期性。<br><img src="/TS时间分析(1).html7.jpg"></li></ul><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>通过本章的学习我们主要了解了以下内容：</p><ul><li>时间序列的定义</li><li>时间序列和非时间序列的差异</li><li>时间序列的组成</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  本篇主要根据&lt;a href=&quot;https://trainings.analyticsvidhya.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Analytic Vidhya&lt;/a&gt;上的课程
+      
+    
+    </summary>
+    
+      <category term="python" scheme="www.sunsoda.fun/categories/python/"/>
+    
+      <category term="时间序列分析" scheme="www.sunsoda.fun/categories/python/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="python" scheme="www.sunsoda.fun/tags/python/"/>
+    
+      <category term="时间序列" scheme="www.sunsoda.fun/tags/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>实习记录20180828-如何在echarts上添加额外的图片和文字</title>
     <link href="www.sunsoda.fun/%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%9520180828.html"/>
     <id>www.sunsoda.fun/实习记录20180828.html</id>
     <published>2018-08-28T09:40:13.000Z</published>
-    <updated>2018-08-28T09:40:13.600Z</updated>
+    <updated>2018-08-28T12:08:14.790Z</updated>
     
     <content type="html"><![CDATA[<h1 id="20180828"><a href="#20180828" class="headerlink" title="20180828"></a>20180828</h1><p>今天主要任务，依然是完善之前灾害分布图的绘制。自己挖的坑，或早或晚都得填啊。</p><p>前面成功利用<code>echart</code>工具，实现了在百度地图上绘制散点图，并使用制定图标代替散点图的工作，氮素！！！！没有给图片添加图例啊，为什么没添加呢，因为当时的代码的写法无法通过自带的<code>legend</code>来添加，最开始采用了最笨的方法，即把图例也当作数据，给定他经纬度，然后就可以画在图上了，这样做的缺陷可想而知，当地图放大或缩小上，图例也会变化了，我们期望的应该是一个独立于地图层，大小能够不变得部分。</p><p>既然这样，很容易想到，先把图例做成一个图片，然后再插入已有的html文件不就可以了吗。<br>所以我开心的用PPT把图例做好另存为图片，再在html文件上了写了个</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ID=<span class="string">"legend"</span> style=&#123;width=<span class="string">"20"</span> height=<span class="string">"20"</span>&#125;&gt;</span><br><span class="line">&lt;img src=<span class="string">"legend.png"</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><p>果然加上去，图例出现啦！！但效果如下</p><p>Σ(っ °Д °;)っ 因为用<code>&lt;div&gt;&lt;/div&gt;</code>单独给图例划分一个容器，所以图例和图自然分开。。。那我这个img放到echart作图的<code>main</code>容器里呢，于是把之前的删掉删掉，我又写了这么几行。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"main"</span> style=<span class="string">"width: 1600px;height:900px;"</span>&gt;</span><br><span class="line">&lt;img src=<span class="string">"legend.png"</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><p>想着这把肯定没问题，然而。。没有图例了！！！果然对echarts和html的理解还是太肤浅了。。</p><p>痛定思痛，这样碰运气是不行了，冷静一点，但一切无路可走的时候，记得，嗯！Baidu+Google+找官网，终于找到了完美的解决方案。。答案在哪里，当然在<a href="http://echarts.baidu.com/option.html#graphic" target="_blank" rel="noopener">ecahrts官网</a><br>啦！！</p><p>那么到底</p><h1 id="如何在echarts上添加额外的图片和文字"><a href="#如何在echarts上添加额外的图片和文字" class="headerlink" title="如何在echarts上添加额外的图片和文字"></a>如何在echarts上添加额外的图片和文字</h1><p>打开<a href="http://echarts.baidu.com/option.html#graphic" target="_blank" rel="noopener">echarts官网</a>，经过一番搜索后，终于看到这么一行话</p><blockquote><p>graphic 是原生图形元素组件。可以支持的图形元素包括：<br>image, text, circle, sector, ring, polygon, polyline, rect, line, bezierCurve, arc, group,</p></blockquote><p>在看到下面这幅图时，眼泪立马掉下来了。</p><p>打开编辑示例，找到下面这几行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">graphic: </span><br><span class="line">    &#123;</span><br><span class="line">        type: 'image',</span><br><span class="line">        id: 'logo',</span><br><span class="line">        right: 20,</span><br><span class="line">        top: 20,</span><br><span class="line">        z: -10,</span><br><span class="line">        bounding: 'raw',</span><br><span class="line">        origin: [75, 75],</span><br><span class="line">        style: &#123;</span><br><span class="line">            image: 'http://echarts.baidu.com/images/favicon.png',</span><br><span class="line">            width: 150,</span><br><span class="line">            height: 150,</span><br><span class="line">            opacity: 0.4</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure></p><p>copy到我的html文件的option下，把图片链接换成我的”精心制作“的图例图片，再调整了下位置参数后，嗯，困扰我好几天的问题，就这么。。。破解了，这心情，，真实难以言喻！！！！</p><p>当然更多的关于这部分的知识详见soda用echarts系列！嗯，又挖了坑，慢慢写吧，嘻嘻。<br>题外话，在设置图例时，出现了图片文字不太清晰的情况，经过认真思索后，考虑这主要时由于提供图片像素过大，而在graphic设置的像素过小，图片压缩导致，所以解决办法就是</p><p><strong> 用绘图工具打开图片—点击重新调整大小—调整像素—保存</strong><br>嗯，就这么简单！</p>]]></content>
     
