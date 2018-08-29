@@ -4,11 +4,36 @@
 
     
   <url>
-    <loc>www.sunsoda.fun/TS%E6%97%B6%E9%97%B4%E5%88%86%E6%9E%90(1).html</loc>
-    <lastmod>2018-08-29T02:56:01.881Z</lastmod>
+    <loc>www.sunsoda.fun/TS%E6%97%B6%E9%97%B4%E5%88%86%E6%9E%90(2).html</loc>
+    <lastmod>2018-08-29T13:36:55.220Z</lastmod>
     <data>
         <display>
-        <title>利用Python进行时间序列的分析及预测(1)--时间序列初识</title>
+        <title>利用Python进行时间序列的预测(2)--探索时间序列</title>
+        <pubTime>2018-08-29T13:21:47.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>时间序列</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="www.sunsoda.fun/categories/python/"/>
+          
+             
+              <breadCrumb title="时间序列分析" url="www.sunsoda.fun/categories/python/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.sunsoda.fun/TS%E6%97%B6%E9%97%B4%E5%88%86%E6%9E%90(1).html</loc>
+    <lastmod>2018-08-29T13:26:53.532Z</lastmod>
+    <data>
+        <display>
+        <title>利用Python进行时间序列的预测(1)--时间序列初识</title>
         <pubTime>2018-08-29T01:21:47.000Z</pubTime>
         
         <tag>python</tag>
@@ -22,6 +47,28 @@
           
              
               <breadCrumb title="时间序列分析" url="www.sunsoda.fun/categories/python/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>www.sunsoda.fun/python1.html</loc>
+    <lastmod>2018-08-29T03:09:52.240Z</lastmod>
+    <data>
+        <display>
+        <title>python机器学习实践---用户流失模型</title>
+        <pubTime>2018-08-25T05:43:02.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>method</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="www.sunsoda.fun/categories/python/"/>
           
         </display>
     </data>
@@ -229,26 +276,4 @@
     
     
     
-    
-  <url>
-    <loc>www.sunsoda.fun/python1.html</loc>
-    <lastmod>2018-08-25T08:40:30.790Z</lastmod>
-    <data>
-        <display>
-        <title>python机器学习实践---用户流失模型</title>
-        <pubTime>2018-08-25T05:43:02.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-        <tag>method</tag>
-         
-         
-           
-             
-              <breadCrumb title="python教程" url="www.sunsoda.fun/categories/python%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
 </urlset>
