@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.sunsoda.fun/"/>
-  <updated>2018-08-29T02:43:34.483Z</updated>
+  <updated>2018-08-29T02:49:17.855Z</updated>
   <id>www.sunsoda.fun/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="www.sunsoda.fun/TS%E6%97%B6%E9%97%B4%E5%88%86%E6%9E%90(1).html"/>
     <id>www.sunsoda.fun/TS时间分析(1).html</id>
     <published>2018-08-29T01:21:47.000Z</published>
-    <updated>2018-08-29T02:43:34.483Z</updated>
+    <updated>2018-08-29T02:49:17.855Z</updated>
     
     <content type="html"><![CDATA[<p><strong>前言</strong></p><p>  本篇主要根据<a href="https://trainings.analyticsvidhya.com" target="_blank" rel="noopener">Analytic Vidhya</a>上的课程<a href="https://trainings.analyticsvidhya.com/courses/course-v1:AnalyticsVidhya+TS_101+TS_term1/courseware/a869013c2e274d1c82cd2fc50e64fb2d/ac9402484c6c444192f735acae44884a/?activate_block_id=block-v1%3AAnalyticsVidhya%2BTS_101%2BTS_term1%2Btype%40sequential%2Bblock%40ac9402484c6c444192f735acae44884a" target="_blank" rel="noopener"><em>Time Series Analysis</em></a>讲义制作。这个课程主要为想要解决与时间系列预测相关问题的人设计的。深入浅出地为讲解了解决时间序列的分析及预所需的必要技能和技术，并且课程还提供足够的理论和实践材料来进一步提升技能，个人认为是非常好的学习材料，为了进一步巩固知识，因而在此整理分享。</p><p> 课程主要从以上主要三个版块:</p><ul><li>理解时间序列</li><li>数据挖掘</li><li>数据预测<br>废话少说让我们进入时间序列的世界吧！，本篇主要介绍关于TS的一些基本概念，内容如下</li></ul><ul><li>认识时间序列</li><li>时间序列的组成</li></ul><h1 id="认识时间序列"><a href="#认识时间序列" class="headerlink" title="认识时间序列"></a>认识时间序列</h1><p>在进一步学习之前，我们必须要明白一个概念。什么是“时间序列”呢？看下面两幅图,你认为哪个属于事假序列呢？<br><img src="/TS时间分析(1).html1.png"></p><p>一般来说，<strong>时间序列（Time series,TS）</strong>是指随着时间收集的数据，并且依赖于时间变化。<br>上面两个例子，我们不难看出汽车的数量是独立于时间的，因此他不算一个时间序列，但是二氧化碳含量冥想随着时间推移增加，因此它是一个时间序列。</p><blockquote><p>时间序列：一系列按照时间顺序收集的数据集合，称为时间序列。 </p></blockquote><p>时间序列在我们日常生活中运用十分广泛，大多数的商业公司要使用时间序列数据来分析下一年的销售数字，网站流量，流量，收到的电话数量等等。一个时间序列的数据可以很好的帮助我们来做预测工作。注意时间序列应当指的数据集合，而不是每一个时间点所收集都得数据</p><p>我们接下来再看几个时间序列的例子，通过这些例子，希望大家能更好地理解什么是时间序列，什么是非时间序列</p><ul><li><p>股价变动<br><img src="/TS时间分析(1).html2.jpg"></p></li><li><p>航空公司旅客人数<br><img src="/TS时间分析(1).html3.jpg"></p></li><li><p>温度变化<br><img src="/TS时间分析(1).html4.png"></p></li><li><p>旅馆游客数目<br><img src="/TS时间分析(1).html5.gif"></p></li></ul><h1 id="时间序列的组成"><a href="#时间序列的组成" class="headerlink" title="时间序列的组成"></a>时间序列的组成</h1><p>在了解了何为时间序列，我们接下来进一步认识时间序列，俩看看那时间序列重要的组成部分。</p><ul><li><strong>Trend(趋势)：</strong><br>趋势是某事物发展或变化的一般方向。所以我们看到下面这个时间序列有很明显的增长趋势，随着时间的推进，乘客数量也明显增加。<br>Example:<br><img src="/TS时间分析(1).html6.jpg"><br>上图中，红色线即代表了TS的变化趋势</li><li><strong>Sesonality(周期性部分)</strong>：<br>在上面的时间序列中，我们还注意到在一定的时间间隔内，数据出现了重复，这种特点就称为周期性。<br><img src="/TS时间分析(1).html7.jpg"></li></ul><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>通过本章的学习我们主要了解了以下内容：</p><ul><li>时间序列的定义</li><li>时间序列和非时间序列的差异</li><li>时间序列的组成</li></ul>]]></content>
     
