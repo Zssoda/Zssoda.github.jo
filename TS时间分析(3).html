@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,时间序列," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Soda小窝" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="利用多种数据模型预测  本篇主要根据Analytic Vidhya上的课程Time Series Analysis讲义制作。这个课程主要为想要解决与时间系列预测相关问题的人设计的。深入浅出地讲解了解决时间序列的分析及预所需的必要技能和技术，并且课程还提供足够的理论和实践材料来进一步提升技能，个人认为是非常好的学习材料，为了进一步巩固知识，因而在此整理分享。  课程主要从以上主要三个版块:  理解时">
+<meta name="keywords" content="python,时间序列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Python进行时间序列的预测(3)--时间序列初识">
+<meta property="og:url" content="www.sunsoda.fun/TS时间分析(3).html">
+<meta property="og:site_name" content="Soda小窝">
+<meta property="og:description" content="利用多种数据模型预测  本篇主要根据Analytic Vidhya上的课程Time Series Analysis讲义制作。这个课程主要为想要解决与时间系列预测相关问题的人设计的。深入浅出地讲解了解决时间序列的分析及预所需的必要技能和技术，并且课程还提供足够的理论和实践材料来进一步提升技能，个人认为是非常好的学习材料，为了进一步巩固知识，因而在此整理分享。  课程主要从以上主要三个版块:  理解时">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/TS/output_78_1.png">
+<meta property="og:image" content="/TS/output_83_1.png">
+<meta property="og:image" content="/TS时间分析(3).html2.png">
+<meta property="og:image" content="/TS时间分析(3).html3.png">
+<meta property="og:image" content="/TS/output_91_1.png">
+<meta property="og:image" content="/TS时间分析(3).html1.4.jpeg">
+<meta property="og:image" content="/TS/output_97_0.png">
+<meta property="og:image" content="/TS/output_102_0.png">
+<meta property="og:image" content="/TS/output_104_0.png">
+<meta property="og:image" content="/TS时间分析(3).htmloutput_128_0.png">
+<meta property="og:image" content="/TS/output_128_0.png">
+<meta property="og:image" content="/TS/output_140_0.png">
+<meta property="og:image" content="/TS/output_144_0.png">
+<meta property="og:image" content="/TS/output_148_0.png">
+<meta property="og:image" content="/TS/output_151_0.png">
+<meta property="og:image" content="/TS/output_155_0.png">
+<meta property="og:image" content="/TS/output_157_0.png">
+<meta property="og:image" content="/TS/output_162_0.png">
+<meta property="og:image" content="/TS/output_162_1.png">
+<meta property="og:image" content="/TS/output_167_0.png">
+<meta property="og:image" content="/TS/output_169_0.png">
+<meta property="og:image" content="/TS/output_173_0.png">
+<meta property="og:image" content="/TS/output_174_0.png">
+<meta property="og:image" content="/TS/output_176_0.png">
+<meta property="og:image" content="/TS/output_177_0.png">
+<meta property="og:image" content="/TS/output_180_1.png">
+<meta property="og:updated_time" content="2018-09-06T13:09:08.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Python进行时间序列的预测(3)--时间序列初识">
+<meta name="twitter:description" content="利用多种数据模型预测  本篇主要根据Analytic Vidhya上的课程Time Series Analysis讲义制作。这个课程主要为想要解决与时间系列预测相关问题的人设计的。深入浅出地讲解了解决时间序列的分析及预所需的必要技能和技术，并且课程还提供足够的理论和实践材料来进一步提升技能，个人认为是非常好的学习材料，为了进一步巩固知识，因而在此整理分享。  课程主要从以上主要三个版块:  理解时">
+<meta name="twitter:image" content="/TS/output_78_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="www.sunsoda.fun/TS时间分析(3).html"/>
+
+
+
+
+
+  <title>利用Python进行时间序列的预测(3)--时间序列初识 | Soda小窝</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b04df301d8de1d14545721a982bdad70";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+     <a href="https://github.com/you"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Soda小窝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.sunsoda.fun/TS时间分析(3).html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Shu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Soda小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">利用Python进行时间序列的预测(3)--时间序列初识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-06T09:21:47+08:00">
+                2018-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/时间序列分析/" itemprop="url" rel="index">
+                    <span itemprop="name">时间序列分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/TS时间分析(3).html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/TS时间分析(3).html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/TS时间分析(3).html" class="leancloud_visitors" data-flag-title="利用Python进行时间序列的预测(3)--时间序列初识">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,927
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  28
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="利用多种数据模型预测"><a href="#利用多种数据模型预测" class="headerlink" title="利用多种数据模型预测"></a>利用多种数据模型预测</h1><p>  本篇主要根据<a href="https://trainings.analyticsvidhya.com" target="_blank" rel="noopener">Analytic Vidhya</a>上的课程<a href="https://trainings.analyticsvidhya.com/courses/course-v1:AnalyticsVidhya+TS_101+TS_term1/courseware/a869013c2e274d1c82cd2fc50e64fb2d/ac9402484c6c444192f735acae44884a/?activate_block_id=block-v1%3AAnalyticsVidhya%2BTS_101%2BTS_term1%2Btype%40sequential%2Bblock%40ac9402484c6c444192f735acae44884a" target="_blank" rel="noopener"><em>Time Series Analysis</em></a>讲义制作。这个课程主要为想要解决与时间系列预测相关问题的人设计的。深入浅出地讲解了解决时间序列的分析及预所需的必要技能和技术，并且课程还提供足够的理论和实践材料来进一步提升技能，个人认为是非常好的学习材料，为了进一步巩固知识，因而在此整理分享。</p>
+<p> 课程主要从以上主要三个版块:</p>
+<ul>
+<li>理解时间序列</li>
+<li>数据探索</li>
+<li><p>数据预测</p>
+<p>在学习了前一章《时间序列初识》，我们开始通过一个实际的案例正式学习如何预测TS！</p>
+<blockquote>
+<p>“麒麟”的投资者想要投资一种新型的交通工具——JetRail。JetRail使用喷气推进技术来运行rails，并以高速的速度移动人们！如果他们能在未来18个月内获得100多万月度用户，那么这笔投资将是有意义的。为了帮助“麒麟”在他们的决定中，你需要预测在接下来的7个月里在JetRail的流量。在测试文件中，您将提供JetRail的流量数据。你可以在这里获取数据集：<a href="https://datahack.analyticsvidhya.com/contest/practice-problem-time-series-2/" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/practice-problem-time-series-2/</a></p>
+</blockquote>
+<p>要合理的预测TS,对数据有一个全面的认识和理解是前提，因此我们的工作主要按照以下思路展开。</p>
+<ul>
+<li>理解数据<ul>
+<li>Hypothesis Gneration 假设生成</li>
+<li>搭建环境，载入数据</li>
+<li>了解数据的结构和内容</li>
+<li>特征提取</li>
+<li>数据探索</li>
+</ul>
+</li>
+<li>利用多种模型预测数据<ul>
+<li>划分数据：训练集+测试集</li>
+<li>建模技术</li>
+<li>Holt’s Linear Trend Model </li>
+<li>Holt Winter Model</li>
+<li>the Introduction of ARIMA Model</li>
+<li>Parameter tuning for ARIMA model</li>
+<li>SARIMAX model on daily time series</li>
+</ul>
+</li>
+</ul>
+<p>在第二部分，我们已经较深入的了解了当前这个数据集，现在就正式进入我们的预测部分吧！</p>
+</li>
+</ul>
+<h2 id="划分数据集：训练集-验证集"><a href="#划分数据集：训练集-验证集" class="headerlink" title="划分数据集：训练集+验证集"></a>划分数据集：训练集+验证集</h2><p>当我们验证了我们所有的假设时，让我们继续为时间序列预测建立模型。但是在此之前，我们需要一个数据集（验证validate）来检查我们模型的性能和泛化能力。下面是用于此目的所需的数据集的一些属性。</p>
+<ul>
+<li>数据集应该具有依赖变量的真实值，而依赖变量可以对预测进行检查。因此 test 数据集不能用于此目的</li>
+<li>模型不应该在验证数据集上进行train。因此，我们我们也不能即用train来训练，又用train来做验证</li>
+</ul>
+<p>基于以上两点，在做预测时，我们一般会将train数据划分为两部分，一部分用来训练模型，一部分则用来验证模型。<br>目前已有很多技术方法用来划分数据即，例如Radom Devisionden等等，在 <a href="https://www.analyticsvidhya.com/blog/2015/11/improve-model-performance-cross-validation-in-python-r/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2015/11/improve-model-performance-cross-validation-in-python-r/</a>. 提供了很多不同的验证方法</p>
+<p>在本文中，针对该数据集，我们直接将后三个月当作validate part,而把剩余的部分当作train part。</p>
+<ul>
+<li><p><strong>为什么这里我们没有采取随机的方法划分呢？</strong><br>这个数据集很明显时具有时间延续性的，利用随机方法划分破坏了其时间延续性，因此最终预测时可能会出现用将来预报过去的情况，所以在与时间有关的的数据集我们一般不采用随机的方法划分数据，以保证其时间上的延续性</p>
+</li>
+<li><p><strong>为什么选择三个月呢？</strong><br> 一方面时因为我们的数据集仅25个月，如果选择超过三个月，训练集会减少很多，不利于模型学习；<br> 另一方面后三个月的时数据趋势最为显著的时候，特征明显。<br>因此综合考虑我们选择了3个月</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Train=train.ix[<span class="string">"2012-08-25"</span>:<span class="string">"2014-06-24"</span>]</span><br><span class="line">valid=train.ix[<span class="string">"2014-06-25"</span>:<span class="string">"2014-09-25"</span>]</span><br></pre></td></tr></table></figure>
+<p>让我们来看一下划分的数据集,在下图中蓝色部分为train part,橙色部分为valid part.我们利用train part来训练模型，而利用valid part来验证模型，最后利用test data来进行预测</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Train.Count.plot(figsize=(<span class="number">15</span>,<span class="number">8</span>),title=<span class="string">"Daily Ridership"</span>,label=<span class="string">'train'</span>)</span><br><span class="line">valid.Count.plot(figsize=(<span class="number">15</span>,<span class="number">8</span>),title=<span class="string">"Daily Ridership"</span>,label=<span class="string">'valid'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Datetime'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Passenger count'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x21386edbdd8&gt;
+</code></pre><p><img src="/TS/output_78_1.png"></p>
+<h2 id="建模技术"><a href="#建模技术" class="headerlink" title="建模技术"></a>建模技术</h2><p>目前有很多种模型可用来做时间序列的预测模拟，接下来我们将就以下几个模型展开讨论：</p>
+<ul>
+<li>Naive Approach 朴素法</li>
+<li>Moving Average 滑动平均法</li>
+<li>Simple Exponential Smoothing 简单指数平滑法</li>
+<li>Holts’s Linear Trend Model Holts’s 线性趋势模型</li>
+</ul>
+<h3 id="朴素法Naive-Approach"><a href="#朴素法Naive-Approach" class="headerlink" title="朴素法Naive Approach"></a>朴素法Naive Approach</h3><p><strong>核心思想</strong>：认为下一个点与上一个点保持一致，显然我们的预测结果最终会得到一条直线。</p>
+<p>让我们利用<code>Naive Approch</code>来预测并验证下valid part吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dd=np.asanyarray(Train.Count)</span><br><span class="line">y_hat=valid.copy()</span><br><span class="line">y_hat[<span class="string">'naive'</span>]=dd[len(dd)<span class="number">-1</span>] <span class="comment">#等于最后一个值</span></span><br><span class="line">plt.figure(figsize=(<span class="number">12</span>,<span class="number">8</span>))</span><br><span class="line">plt.plot(Train.index,Train[<span class="string">'Count'</span>],label=<span class="string">'Train'</span>)</span><br><span class="line">plt.plot(valid.index,valid[<span class="string">'Count'</span>],label=<span class="string">'valid'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'naive'</span>],label=<span class="string">'Naive Forecast'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'datetime'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Passengers'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0,0.5,&apos;Passengers&apos;)
+</code></pre><p><img src="/TS/output_83_1.png"><br> 通过均方根误差RMSE(ROOT MEAN Squar Error)我们可以看评估预报经度的准确性</p>
+<pre><code>- RMSE是残差的标准偏差
+- RMSE衡量了回归结果与真实值的差距
+- 其计算公式如下
+</code></pre><p> <img src="/TS时间分析(3).html2.png" \=""></p>
+<p>现在我们利用均方根误差来检查以下训练结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line">rms=np.sqrt(mean_squared_error(valid.Count,y_hat.naive))</span><br><span class="line">print(rms)</span><br></pre></td></tr></table></figure>
+<pre><code>111.79050467496724
+</code></pre><p>虽然该方法rmse较小，但我们可以推断此方法对于高可变性的数据而言，预测效果并不会太好，并且其只采用了临近数据，在接下来我们会继续介绍一些模型，不断提高预报能力</p>
+<h3 id="滑动平均法-Moving-Average"><a href="#滑动平均法-Moving-Average" class="headerlink" title="滑动平均法 Moving Average"></a>滑动平均法 Moving Average</h3><p><strong>核心思想：</strong> 利用这个方法，我们的预报不仅仅是依靠最后一个观测点，而是依赖与最近的一段的时间，通过计算临近几小时客流量数据的平均来实现预报<br>用下图加深以下对这个方法的理解：<br><img src="/TS时间分析(3).html3.png"></p>
+<p>让我们使用下<code>Moving Average</code>方法吧，这里分别尝试10,20，50days的滑动平均</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Train[<span class="string">'Count'</span>].rolling(<span class="number">10</span>).mean()[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>313.0333333333333
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">y_hat[<span class="string">'MA_10'</span>]=Train[<span class="string">'Count'</span>].rolling(<span class="number">10</span>).mean()[<span class="number">-1</span>]</span><br><span class="line">y_hat[<span class="string">'MA_20'</span>]=Train[<span class="string">'Count'</span>].rolling(<span class="number">20</span>).mean()[<span class="number">-1</span>]</span><br><span class="line">y_hat[<span class="string">'MA_50'</span>]=Train[<span class="string">'Count'</span>].rolling(<span class="number">50</span>).mean()[<span class="number">-1</span>]</span><br><span class="line">plt.figure(figsize=(<span class="number">12</span>,<span class="number">8</span>))</span><br><span class="line">plt.plot(Train.index,Train[<span class="string">'Count'</span>],label=<span class="string">'Train'</span>)</span><br><span class="line">plt.plot(valid.index,valid[<span class="string">'Count'</span>],label=<span class="string">'valid'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'naive'</span>],label=<span class="string">'Naive Forecast'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'MA_10'</span>],label=<span class="string">'MA_10'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'MA_20'</span>],label=<span class="string">'MA_20'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'MA_50'</span>],label=<span class="string">'MA_50'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'datetime'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Passengers'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0,0.5,&apos;Passengers&apos;)
+</code></pre><p><img src="/TS/output_91_1.png"></p>
+<p>可以看出随着滑动平均天数增加，预测值越来越小，这是因为整个序列整体为上升趋势造成的，纳入天数越多，造成预测值就会越小,且可以看出该方法导致RMSE明显增大了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rms =np.sqrt(mean_squared_error(valid.Count, y_hat.MA_10))</span><br><span class="line">print(rms)</span><br><span class="line">rms =np.sqrt(mean_squared_error(valid.Count, y_hat.MA_20))</span><br><span class="line">print(rms)</span><br><span class="line">rms =np.sqrt(mean_squared_error(valid.Count, y_hat.MA_50))</span><br><span class="line">print(rms)</span><br></pre></td></tr></table></figure>
+<pre><code>134.23733308950264
+130.44984977550422
+144.19175679986802
+</code></pre><h3 id="简单指数平滑法-Simple-Exponential-Smoothing"><a href="#简单指数平滑法-Simple-Exponential-Smoothing" class="headerlink" title="简单指数平滑法 Simple Exponential Smoothing"></a>简单指数平滑法 Simple Exponential Smoothing</h3><p><strong>核心思想</strong>:临近预测点越近的数据，赋予其越高的权重。随距离预测数据的距离，权重指数即呈指数级下降，最老的观测结果其权重最小。</p>
+<p>下图是一个简单指数平滑法的例子<br><img src="/TS时间分析(3).html1.4.jpeg"></p>
+<p>让我们使用<code>Simple Exponential Smoothing</code>来做一下预测吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.api <span class="keyword">import</span> SimpleExpSmoothing</span><br><span class="line">fit = SimpleExpSmoothing(np.asarray(Train[<span class="string">'Count'</span>])).fit(smoothing_level=<span class="number">0.6</span>,optimized=<span class="keyword">False</span>)</span><br><span class="line">y_hat[<span class="string">'SES'</span>]=fit.forecast(len(valid))</span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">8</span>))</span><br><span class="line">plt.plot(Train[<span class="string">'Count'</span>], label=<span class="string">'Train'</span>)</span><br><span class="line">plt.plot(valid[<span class="string">'Count'</span>], label=<span class="string">'Valid'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'naive'</span>],label=<span class="string">'Naive Forecast'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'MA_20'</span>],label=<span class="string">'MA_20'</span>)</span><br><span class="line">plt.plot(y_hat[<span class="string">'SES'</span>], label=<span class="string">'SES'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_97_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rms=np.sqrt(mean_squared_error(valid.Count,y_hat.SES))</span><br><span class="line">print(rms)</span><br></pre></td></tr></table></figure>
+<pre><code>113.43708111884514
+</code></pre><h3 id="Holts’s-Linear-Trend-Model-Holts’s-线性趋势模型"><a href="#Holts’s-Linear-Trend-Model-Holts’s-线性趋势模型" class="headerlink" title="Holts’s Linear Trend Model Holts’s 线性趋势模型"></a>Holts’s Linear Trend Model Holts’s 线性趋势模型</h3><p><strong>核心思想</strong>  该方法在SES的基础，考虑了数据集的趋势性变化。</p>
+<p>还记得我们在1.2节《时间序列的组成》讲述的内容吗？一个时间序列可分为趋势，周期和残差项三部分，这里我们首先将数据分解观察一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm</span><br><span class="line">sm.tsa.seasonal_decompose(Train.Count).plot()</span><br><span class="line">result=sm.tsa.stattools.adfuller(train.Count)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_102_0.png"></p>
+<p>很明显，我们观察到数据集存在一个增长的趋势，所以我们将在此趋势基础上制作模型预估</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.api <span class="keyword">import</span> Holt</span><br><span class="line"></span><br><span class="line">fit2 = Holt(np.asarray(Train[<span class="string">'Count'</span>])).fit(smoothing_level = <span class="number">0.3</span>,smoothing_slope = <span class="number">0.1</span>)</span><br><span class="line">y_hat[<span class="string">'Holt'</span>]=fit2.forecast(len(valid))</span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">8</span>))</span><br><span class="line">plt.plot(Train[<span class="string">'Count'</span>], label=<span class="string">'Train'</span>)</span><br><span class="line">plt.plot(valid[<span class="string">'Count'</span>], label=<span class="string">'Valid'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'naive'</span>],label=<span class="string">'Naive Forecast'</span>)</span><br><span class="line">plt.plot(y_hat.index,y_hat[<span class="string">'MA_20'</span>],label=<span class="string">'MA_20'</span>)</span><br><span class="line">plt.plot(y_hat[<span class="string">'SES'</span>], label=<span class="string">'SES'</span>)</span><br><span class="line">plt.plot(y_hat[<span class="string">'Holt'</span>], label=<span class="string">'SES'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_104_0.png"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmse=np.sqrt(mean_squared_error(valid.Count,y_hat[<span class="string">'Holt'</span>]))</span><br><span class="line">print(rmse)</span><br></pre></td></tr></table></figure></p>
+<pre><code>112.94278345314041
+</code></pre><p>可见，较SES方法而言，该方法RMSE有所减小了，我们将基于此方法来进行预测</p>
+<h2 id="Holt’s-Linear-Trend-Model"><a href="#Holt’s-Linear-Trend-Model" class="headerlink" title="Holt’s Linear Trend Model"></a>Holt’s Linear Trend Model</h2><ul>
+<li>现在让我们使用Holt’s Linear Model来对日数据进行处理。并对test dataset 进行预测</li>
+<li>我们将首先基于日数据做一些删，然后将未来的预测再转为小时数据</li>
+</ul>
+<p>首先让我们看看需要提交数据的要求</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">submission=pd.read_csv(<span class="string">'data/Sample_Submission_QChS6c3.csv'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">submission.head()</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>ID</th><br>      <th>Count</th><br>    </tr><br>  </thead><br>  <tbody><br>  </tbody><br></table><br></div>
+
+
+
+<p>可见只需要我们提交<code>ID</code>和<code>Count</code>就可以了，在前一节，我们已经利用train数据对模型进行了拟合，这里我们直接来对test数据进行yuce</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fit3 = Holt(np.asarray(train[<span class="string">'Count'</span>])).fit(smoothing_level = <span class="number">0.3</span>,smoothing_slope = <span class="number">0.1</span>)</span><br><span class="line">predict=fit3.forecast(len(test))</span><br><span class="line">test[<span class="string">'prediction'</span>]=predict</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_org[<span class="string">'ratio'</span>]=train_org[<span class="string">'Count'</span>]/train_org[<span class="string">'Count'</span>].sum()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp=train_org.groupby([<span class="string">'hour'</span>])[<span class="string">'ratio'</span>].sum()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(temp, columns=[<span class="string">'Hour'</span>,<span class="string">'ratio'</span>]).to_csv(<span class="string">'GROUPby.csv'</span>)</span><br><span class="line"></span><br><span class="line">temp2=pd.read_csv(<span class="string">"GROUPby.csv"</span>)</span><br><span class="line">temp2=temp2.drop(<span class="string">'Hour'</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">merge=pd.merge(test,test_org,on=(<span class="string">'day'</span>,<span class="string">'month'</span>,<span class="string">'year'</span>),how=<span class="string">'left'</span>)</span><br><span class="line">merge[<span class="string">'hour'</span>]=merge[<span class="string">'hour_y'</span>]</span><br><span class="line">merge=merge.drop([<span class="string">'year'</span>,<span class="string">'month'</span>,<span class="string">'Datetime'</span>,<span class="string">'hour_x'</span>,<span class="string">'hour_y'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prediction=pd.merge(merge, temp2, on=<span class="string">'hour'</span>, how=<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prediction=pd.merge(merge,temp2,on=<span class="string">'hour'</span>,how=<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prediction[<span class="string">'Count'</span>]=prediction[<span class="string">'prediction'</span>]*prediction[<span class="string">'ratio'</span>]*<span class="number">24</span></span><br><span class="line">prediction[<span class="string">'ID'</span>]=prediction[<span class="string">'ID_y'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">submission=prediction.drop([<span class="string">'ID_x'</span>, <span class="string">'day'</span>, <span class="string">'ID_y'</span>,<span class="string">'prediction'</span>,<span class="string">'hour'</span>, <span class="string">'ratio'</span>],axis=<span class="number">1</span>)</span><br><span class="line">pd.DataFrame(submission, columns=[<span class="string">'ID'</span>,<span class="string">'Count'</span>]).to_csv(<span class="string">'Holt linear.csv'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Holt-winter’s-model-on-daily-time-series"><a href="#Holt-winter’s-model-on-daily-time-series" class="headerlink" title="Holt winter’s model on daily time series"></a>Holt winter’s model on daily time series</h2><p>在Holt’s Liner Trend Modele中，我们将线性趋势纳入了考虑之中，但值得注意的时，时间序列还存在一定的周期性，因此有没有什么办法可以让我们既考虑趋势，也考虑周期呢？</p>
+<p>本章将介绍的Holt winter’s model即用来解决该问题，该模型的核心思想即是对周期循环的组分采取指数平滑。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.api <span class="keyword">import</span> ExponentialSmoothing</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_hat_avg=valid.copy()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fit1=ExponentialSmoothing(np.asarray(Train[<span class="string">'Count'</span>]),seasonal_periods=<span class="number">7</span>,trend=<span class="string">'add'</span>,seasonal=<span class="string">'add'</span>).fit()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_hat_avg[<span class="string">'Holt_Winter'</span>]=fit1.forecast(len(valid))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">8</span>))</span><br><span class="line">plt.plot( Train[<span class="string">'Count'</span>], label=<span class="string">'Train'</span>)</span><br><span class="line">plt.plot(valid[<span class="string">'Count'</span>], label=<span class="string">'Valid'</span>)</span><br><span class="line">plt.plot(y_hat_avg[<span class="string">'Holt_Winter'</span>], label=<span class="string">'Holt_Winter'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS时间分析(3).htmloutput_128_0.png" alt="png"><br><img src="/TS/output_128_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rms =np.sqrt(mean_squared_error(valid.Count, y_hat_avg.Holt_Winter))</span><br><span class="line">print(rms)</span><br><span class="line"><span class="number">82.37373991413227</span></span><br></pre></td></tr></table></figure>
+<pre><code>82.37601031522233
+
+
+
+
+
+82.37373991413227
+</code></pre><p>可见，考虑周期循环后，RMS值明显下降了，我们接下来对测试值进行预估,并按照之前的方法将周数据转为小时数据，此结最后在datahack评分达到328分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">predict=fit1.forecast(len(test))</span><br><span class="line"><span class="comment">#Now we will convert these daily passenger count into hourly passenger count using the same approach which we followed above.</span></span><br><span class="line">test[<span class="string">'prediction'</span>]=predict</span><br><span class="line"><span class="comment"># Merge Test and test_original on day, month and year</span></span><br><span class="line">merge=pd.merge(test, test_org, on=(<span class="string">'day'</span>,<span class="string">'month'</span>, <span class="string">'year'</span>), how=<span class="string">'left'</span>)</span><br><span class="line">merge[<span class="string">'hour'</span>]=merge[<span class="string">'hour_y'</span>]</span><br><span class="line">merge=merge.drop([<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'Datetime'</span>,<span class="string">'hour_x'</span>,<span class="string">'hour_y'</span>], axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting by merging merge and temp2</span></span><br><span class="line">prediction=pd.merge(merge, temp2, on=<span class="string">'hour'</span>, how=<span class="string">'left'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Converting the ratio to the original scale</span></span><br><span class="line">prediction[<span class="string">'Count'</span>]=prediction[<span class="string">'prediction'</span>]*prediction[<span class="string">'ratio'</span>]*<span class="number">24</span></span><br><span class="line"><span class="comment">#Let’s drop all features other than ID and Count</span></span><br><span class="line">prediction[<span class="string">'ID'</span>]=prediction[<span class="string">'ID_y'</span>]</span><br><span class="line">submission=prediction.drop([<span class="string">'day'</span>,<span class="string">'hour'</span>,<span class="string">'ratio'</span>,<span class="string">'prediction'</span>, <span class="string">'ID_x'</span>, <span class="string">'ID_y'</span>],axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Converting the final submission to csv format</span></span><br><span class="line">pd.DataFrame(submission, columns=[<span class="string">'ID'</span>,<span class="string">'Count'</span>]).to_csv(<span class="string">'Holt winters.csv'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="ARIMA-model"><a href="#ARIMA-model" class="headerlink" title="ARIMA model"></a>ARIMA model</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>在之前的模型，我们从level,trend,seasonality几个方面考虑对数据做出了预测，有没有方法可以把几种预测相互结合起来呢？ARIMA方法为我们提供了路径。ARIMA代表Auto Regression Integrated Moving Average,它需要三个有序参数（p,d,q）来建立。</p>
+<ul>
+<li>P:P是自回归模型的顺序（number of time lags）</li>
+<li>d: the degree of differencing(number of times the data have had past values subtracted)</li>
+<li>q:滑动平均的模型的顺序。</li>
+</ul>
+<p>ARIMA模型，需要时间序列为stationary time series,</p>
+<ul>
+<li>何为stationnary time series呢，三条基本准则如下：<ul>
+<li>时间序列的平均，不是时间的函数，为常数</li>
+<li>时间的方差不是时间的函数</li>
+<li>第(i)项和（i+1）项的协方差不是时间的函数</li>
+</ul>
+</li>
+<li>为什么需要时间序列为stationary time series呢？<ul>
+<li>时间序列称为stationary time series可以使得变量独立，变量不独立有很多种方式，但是独立仅存在一种情况，因此，使得变量独立后，我们能够挖掘出更多的信息，因此时间序列必须stationary</li>
+</ul>
+</li>
+<li>如何使时间序列变为stationary time series呢？<br> 主要需要去除趋势和周期，详情可参见链接: <a href="https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/</a></li>
+</ul>
+<h3 id="ARIMA模型的调试"><a href="#ARIMA模型的调试" class="headerlink" title="ARIMA模型的调试"></a>ARIMA模型的调试</h3><p>正如前文所说，我们必须对时间序列的stationarity进行检查，如果其不满足stationarity的条件，需要对其进行进一步处理</p>
+<h4 id="Stationarity-check"><a href="#Stationarity-check" class="headerlink" title="Stationarity check"></a>Stationarity check</h4><p>我们使用Dickey-Fuller来进行书剑序列的定常检验</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> adfuller</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_stationarity</span><span class="params">(timeseries)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Determing rolling statistics</span></span><br><span class="line">    rolmean = timeseries.rolling(window=<span class="number">24</span>).mean()<span class="comment"># 24 hours on each day</span></span><br><span class="line">    rolstd = timeseries.rolling(window=<span class="number">24</span>).std()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Plot rolling statistics:</span></span><br><span class="line">    orig = plt.plot(timeseries, color=<span class="string">'blue'</span>,label=<span class="string">'Original'</span>)</span><br><span class="line">    mean = plt.plot(rolmean, color=<span class="string">'red'</span>, label=<span class="string">'Rolling Mean'</span>)</span><br><span class="line">    std = plt.plot(rolstd, color=<span class="string">'black'</span>, label = <span class="string">'Rolling Std'</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">    plt.title(<span class="string">'Rolling Mean &amp; Standard Deviation'</span>)</span><br><span class="line">    plt.show(block=<span class="keyword">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#Perform Dickey-Fuller test:</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'Results of Dickey-Fuller Test:'</span>)</span><br><span class="line">    dftest = adfuller(timeseries, autolag=<span class="string">'AIC'</span>)</span><br><span class="line">    dfoutput = pd.Series(dftest[<span class="number">0</span>:<span class="number">4</span>], index=[<span class="string">'Test Statistic'</span>,<span class="string">'p-value'</span>,<span class="string">'#Lags Used'</span>,<span class="string">'Number of Observations Used'</span>])</span><br><span class="line">    <span class="keyword">for</span> key,value <span class="keyword">in</span> dftest[<span class="number">4</span>].items():</span><br><span class="line">        dfoutput[<span class="string">'Critical Value (%s)'</span>%key] = value</span><br><span class="line">    <span class="keyword">print</span> (dfoutput)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib.pylab <span class="keyword">import</span> rcParams</span><br><span class="line">rcParams[<span class="string">'figure.figsize'</span>] = <span class="number">20</span>,<span class="number">10</span></span><br><span class="line">test_stationarity(train_org[<span class="string">'Count'</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_140_0.png"><br>    Results of Dickey-Fuller Test:<br>    Test Statistic                    -4.456561<br>    p-value                            0.000235</p>
+<pre><code>#Lags Used                        45.000000
+Number of Observations Used    18242.000000
+Critical Value (1%)               -3.430709
+Critical Value (5%)               -2.861698
+Critical Value (10%)              -2.566854
+dtype: float64
+</code></pre><p>统计数据表明，时间序列是stationary的，因为Test&lt;Critical，但我们可以看到数据有明显的增长趋势和一定的周期性。因此我们试着让数据更稳定。要做到这一点，我们需要从数据中去除趋势和季节性。</p>
+<h4 id="去除趋势"><a href="#去除趋势" class="headerlink" title="去除趋势"></a>去除趋势</h4><ul>
+<li>当数据长期增加或减少时，就会出现一种趋势，趋势并不需要一定是线性的。</li>
+<li>我们在数据中看到了一个不断增长的趋势，因此我们可以采取对大值赋予更高惩罚值的转换方法 例如，对数转换。</li>
+<li>我们将采用滚动平均来消除这一趋势。我们将根据每天24小时的事实，采用24小时的窗口。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Train_log = np.log(Train[<span class="string">'Count'</span>])</span><br><span class="line">valid_log = np.log(valid[<span class="string">'Count'</span>])</span><br><span class="line">moving_avg = Train_log.rolling(<span class="number">24</span>).mean()</span><br><span class="line">plt.plot(Train_log)</span><br><span class="line">plt.plot(moving_avg, color = <span class="string">'red'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_144_0.png"><br>我们可以观察到一个日益增长的趋势。现在我们将移除这个增加的趋势，使我们的时间序列保持稳定。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_log_moving_avg_diff = Train_log - moving_avg</span><br></pre></td></tr></table></figure>
+<p>因为我们取了24个值的平均值，所以对于前23个值没有定义滚动平均值。我们把这些空值去掉。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_log_moving_avg_diff.dropna(inplace = <span class="keyword">True</span>)</span><br><span class="line">test_stationarity(train_log_moving_avg_diff)</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_148_0.png"></p>
+<pre><code>Results of Dickey-Fuller Test:
+Test Statistic                -5.861646e+00
+p-value                        3.399422e-07
+#Lags Used                     2.000000e+01
+Number of Observations Used    6.250000e+02
+Critical Value (1%)           -3.440856e+00
+Critical Value (5%)           -2.866175e+00
+Critical Value (10%)          -2.569239e+00
+dtype: float64
+</code></pre><p>可以看出稳定性进一步提高了，现在我们进一步来稳定时间序列的均值</p>
+<ul>
+<li>差分可以帮助我们使数据稳定，并进一步消除趋势</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_log_diff = Train_log - Train_log.shift(<span class="number">1</span>)</span><br><span class="line">test_stationarity(train_log_diff.dropna())</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_151_0.png"><br>    Results of Dickey-Fuller Test:<br>    Test Statistic                -8.237568e+00<br>    p-value                        5.834049e-13</p>
+<pre><code>#Lags Used                     1.900000e+01
+Number of Observations Used    6.480000e+02
+Critical Value (1%)           -3.440482e+00
+Critical Value (5%)           -2.866011e+00
+Critical Value (10%)          -2.569151e+00
+dtype: float64
+</code></pre><h4 id="移除周期"><a href="#移除周期" class="headerlink" title="移除周期"></a>移除周期</h4><ul>
+<li>当一个时间序列受到周期性因素的影响时，就会出现周期循环的特点（例如，季节循环，月的循环，或周的循环）。</li>
+<li>季节性总是一个固定的和已知的时期。</li>
+<li>我们将利用周期分解将时间序列分解为趋势、季节性和残差。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.seasonal <span class="keyword">import</span> seasonal_decompose</span><br><span class="line">decomposition = seasonal_decompose(pd.DataFrame(Train_log).Count.values, freq = <span class="number">24</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">trend = decomposition.trend</span><br><span class="line">seasonal = decomposition.seasonal</span><br><span class="line">residual = decomposition.resid</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">411</span>)</span><br><span class="line">plt.plot(Train_log, label=<span class="string">'Original'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.subplot(<span class="number">412</span>)</span><br><span class="line">plt.plot(trend, label=<span class="string">'Trend'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.subplot(<span class="number">413</span>)</span><br><span class="line">plt.plot(seasonal,label=<span class="string">'Seasonality'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.subplot(<span class="number">414</span>)</span><br><span class="line">plt.plot(residual, label=<span class="string">'Residuals'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_155_0.png"><br>检查下残差的稳定性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_log_decompose = pd.DataFrame(residual)</span><br><span class="line">train_log_decompose[<span class="string">'date'</span>] = Train_log.index</span><br><span class="line">train_log_decompose.set_index(<span class="string">'date'</span>, inplace = <span class="keyword">True</span>)</span><br><span class="line">train_log_decompose.dropna(inplace=<span class="keyword">True</span>)</span><br><span class="line">test_stationarity(train_log_decompose[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_157_0.png"></p>
+<pre><code>Results of Dickey-Fuller Test:
+Test Statistic                -7.822096e+00
+p-value                        6.628321e-12
+#Lags Used                     2.000000e+01
+Number of Observations Used    6.240000e+02
+Critical Value (1%)           -3.440873e+00
+Critical Value (5%)           -2.866183e+00
+Critical Value (10%)          -2.569243e+00
+dtype: float64
+</code></pre><p>可见残差也是稳定的，现在我们可以用不同的模型来对数据进行预测处理了</p>
+<h4 id="利用ARIMA来进行预测"><a href="#利用ARIMA来进行预测" class="headerlink" title="利用ARIMA来进行预测"></a>利用ARIMA来进行预测</h4><ul>
+<li>要利用ARIMA模型来模拟，必须要知道最优的P,d,q值</li>
+<li>ACF(自相关函数)和PACF(偏自相关)函数来找最优p,d,q值</li>
+<li>ACF是用来衡量时间序列与它本身滞后序列相关的函数</li>
+<li>PACF是用来衡量在消除中间已经解释了的变化后，时间序列和他本身滞后序列的相关性</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> acf, pacf</span><br><span class="line">lag_acf = acf(train_log_diff.dropna(), nlags=<span class="number">25</span>)</span><br><span class="line">lag_pacf = pacf(train_log_diff.dropna(), nlags=<span class="number">25</span>, method=<span class="string">'ols'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(lag_acf)</span><br><span class="line">plt.axhline(y=<span class="number">0</span>,linestyle=<span class="string">'--'</span>,color=<span class="string">'gray'</span>)</span><br><span class="line">plt.axhline(y=<span class="number">-1.96</span>/np.sqrt(len(train_log_diff.dropna())),linestyle=<span class="string">'--'</span>,color=<span class="string">'gray'</span>)</span><br><span class="line">plt.axhline(y=<span class="number">1.96</span>/np.sqrt(len(train_log_diff.dropna())),linestyle=<span class="string">'--'</span>,color=<span class="string">'gray'</span>)</span><br><span class="line">plt.title(<span class="string">'Autocorrelation Function'</span>)</span><br><span class="line">plt.show()</span><br><span class="line">plt.plot(lag_pacf)</span><br><span class="line">plt.axhline(y=<span class="number">0</span>,linestyle=<span class="string">'--'</span>,color=<span class="string">'gray'</span>)</span><br><span class="line">plt.axhline(y=<span class="number">-1.96</span>/np.sqrt(len(train_log_diff.dropna())),linestyle=<span class="string">'--'</span>,color=<span class="string">'gray'</span>)</span><br><span class="line">plt.axhline(y=<span class="number">1.96</span>/np.sqrt(len(train_log_diff.dropna())),linestyle=<span class="string">'--'</span>,color=<span class="string">'gray'</span>)</span><br><span class="line">plt.title(<span class="string">'Partial Autocorrelation Function'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_162_0.png"></p>
+<p><img src="/TS/output_162_1.png"></p>
+<ul>
+<li><p>p值是PACF图表第一次越过上置信区间的滞后值。可以注意到，在这种情况下p=1。</p>
+</li>
+<li><p>q值是ACF图第一次越过上置信区间的滞后值。我们可以注意到，在这个例子中q=1。</p>
+</li>
+</ul>
+<p>现在我们来做ARIMA模型，因为我们有p q值。我们将分别制作AR和MA模型，然后将它们组合在一起。</p>
+<h5 id="AR-model"><a href="#AR-model" class="headerlink" title="AR model"></a>AR model</h5><p>自回归模型指定输出变量线性依赖于它自己以前的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA</span><br><span class="line">model = ARIMA(Train_log, order=(<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>))  <span class="comment"># here the q value is zero since it is just the AR model</span></span><br><span class="line">results_AR = model.fit(disp=<span class="number">-1</span>)  </span><br><span class="line">plt.plot(train_log_diff.dropna(), label=<span class="string">'original'</span>)</span><br><span class="line">plt.plot(results_AR.fittedvalues, color=<span class="string">'red'</span>, label=<span class="string">'predictions'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_167_0.png"></p>
+<p>让我们画出AR模型的验证曲线。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AR_predict=results_AR.predict(start=<span class="string">"2014-06-25"</span>, end=<span class="string">"2014-09-25"</span>)</span><br><span class="line">AR_predict=AR_predict.cumsum().shift().fillna(<span class="number">0</span>)</span><br><span class="line">AR_predict1=pd.Series(np.ones(valid.shape[<span class="number">0</span>]) * np.log(valid[<span class="string">'Count'</span>])[<span class="number">0</span>], index = valid.index)</span><br><span class="line">AR_predict1=AR_predict1.add(AR_predict,fill_value=<span class="number">0</span>)</span><br><span class="line">AR_predict = np.exp(AR_predict1)</span><br><span class="line">plt.plot(valid[<span class="string">'Count'</span>], label = <span class="string">"Valid"</span>)</span><br><span class="line">plt.plot(AR_predict, color = <span class="string">'red'</span>, label = <span class="string">"Predict"</span>)</span><br><span class="line">plt.legend(loc= <span class="string">'best'</span>)</span><br><span class="line">plt.title(<span class="string">'RMSE: %.4f'</span>% (np.sqrt(np.dot(AR_predict, valid[<span class="string">'Count'</span>]))/valid.shape[<span class="number">0</span>]))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_169_0.png"><br>红色为验证集的预测结果，接下类我们来建立MA模型</p>
+<h6 id="MA-model"><a href="#MA-model" class="headerlink" title="MA model"></a>MA model</h6><p>移动平均模型指定输出变量线性地依赖于一个随机的（不完全可预测的）当前和各种过去的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(Train_log, order=(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>))  <span class="comment"># here the p value is zero since it is just the MA model</span></span><br><span class="line">results_MA = model.fit(disp=<span class="number">-1</span>)  </span><br><span class="line">plt.plot(train_log_diff.dropna(), label=<span class="string">'original'</span>)</span><br><span class="line">plt.plot(results_MA.fittedvalues, color=<span class="string">'red'</span>, label=<span class="string">'prediction'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_173_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MA_predict=results_MA.predict(start=<span class="string">"2014-06-25"</span>, end=<span class="string">"2014-09-25"</span>)</span><br><span class="line">MA_predict=MA_predict.cumsum().shift().fillna(<span class="number">0</span>)</span><br><span class="line">MA_predict1=pd.Series(np.ones(valid.shape[<span class="number">0</span>]) * np.log(valid[<span class="string">'Count'</span>])[<span class="number">0</span>], index = valid.index)</span><br><span class="line">MA_predict1=MA_predict1.add(MA_predict,fill_value=<span class="number">0</span>)</span><br><span class="line">MA_predict = np.exp(MA_predict1)</span><br><span class="line">plt.plot(valid[<span class="string">'Count'</span>], label = <span class="string">"Valid"</span>)</span><br><span class="line">plt.plot(MA_predict, color = <span class="string">'red'</span>, label = <span class="string">"Predict"</span>)</span><br><span class="line">plt.legend(loc= <span class="string">'best'</span>)</span><br><span class="line">plt.title(<span class="string">'RMSE: %.4f'</span>% (np.sqrt(np.dot(MA_predict, valid[<span class="string">'Count'</span>]))/valid.shape[<span class="number">0</span>]))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_174_0.png"><br>现在我们将两种方法结合起来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(Train_log, order=(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>))  </span><br><span class="line">results_ARIMA = model.fit(disp=<span class="number">-1</span>)  </span><br><span class="line">plt.plot(train_log_diff.dropna(),  label=<span class="string">'original'</span>)</span><br><span class="line">plt.plot(results_ARIMA.fittedvalues, color=<span class="string">'red'</span>, label=<span class="string">'predicted'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_176_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_prediction_diff</span><span class="params">(predict_diff, given_set)</span>:</span></span><br><span class="line">    predict_diff= predict_diff.cumsum().shift().fillna(<span class="number">0</span>)</span><br><span class="line">    predict_base = pd.Series(np.ones(given_set.shape[<span class="number">0</span>]) * np.log(given_set[<span class="string">'Count'</span>])[<span class="number">0</span>], index = given_set.index)</span><br><span class="line">    predict_log = predict_base.add(predict_diff,fill_value=<span class="number">0</span>)</span><br><span class="line">    predict = np.exp(predict_log)</span><br><span class="line">    </span><br><span class="line">    plt.plot(given_set[<span class="string">'Count'</span>], label = <span class="string">"Given set"</span>)</span><br><span class="line">    plt.plot(predict, color = <span class="string">'red'</span>, label = <span class="string">"Predict"</span>)</span><br><span class="line">    plt.legend(loc= <span class="string">'best'</span>)</span><br><span class="line">    plt.title(<span class="string">'RMSE: %.4f'</span>% (np.sqrt(np.dot(predict, given_set[<span class="string">'Count'</span>]))/given_set.shape[<span class="number">0</span>]))</span><br><span class="line">    plt.show()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_prediction_log</span><span class="params">(predict_log, given_set)</span>:</span></span><br><span class="line">    predict = np.exp(predict_log)</span><br><span class="line">    </span><br><span class="line">    plt.plot(given_set[<span class="string">'Count'</span>], label = <span class="string">"Given set"</span>)</span><br><span class="line">    plt.plot(predict, color = <span class="string">'red'</span>, label = <span class="string">"Predict"</span>)</span><br><span class="line">    plt.legend(loc= <span class="string">'best'</span>)</span><br><span class="line">    plt.title(<span class="string">'RMSE: %.4f'</span>% (np.sqrt(np.dot(predict, given_set[<span class="string">'Count'</span>]))/given_set.shape[<span class="number">0</span>]))</span><br><span class="line">    plt.show()</span><br><span class="line"><span class="comment"># Let’s predict the values for validation set.</span></span><br><span class="line">ARIMA_predict_diff=results_ARIMA.predict(start=<span class="string">"2014-06-25"</span>, end=<span class="string">"2014-09-25"</span>)</span><br><span class="line">check_prediction_diff(ARIMA_predict_diff, valid)</span><br></pre></td></tr></table></figure>
+<p><img src="/TS/output_177_0.png"></p>
+<h3 id="SARIMAX-model-on-daily-time-series"><a href="#SARIMAX-model-on-daily-time-series" class="headerlink" title="SARIMAX model on daily time series"></a>SARIMAX model on daily time series</h3><p>SARIMAX模型考虑了时间序列的季节性。因此，我们将在时间序列上构建一个SARIMAX模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm</span><br><span class="line">y_hat_avg = valid.copy()</span><br><span class="line">fit1 = sm.tsa.statespace.SARIMAX(Train.Count, order=(<span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>),seasonal_order=(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">7</span>)).fit()</span><br><span class="line">y_hat_avg[<span class="string">'SARIMA'</span>] = fit1.predict(start=<span class="string">"2014-6-25"</span>, end=<span class="string">"2014-9-25"</span>, dynamic=<span class="keyword">True</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">8</span>))</span><br><span class="line">plt.plot( Train[<span class="string">'Count'</span>], label=<span class="string">'Train'</span>)</span><br><span class="line">plt.plot(valid[<span class="string">'Count'</span>], label=<span class="string">'Valid'</span>)</span><br><span class="line">plt.plot(y_hat_avg[<span class="string">'SARIMA'</span>], label=<span class="string">'SARIMA'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>C:\Users\sodad\Anaconda3\lib\site-packages\statsmodels\base\model.py:508: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
+  &quot;Check mle_retvals&quot;, ConvergenceWarning)
+</code></pre><p><img src="/TS/output_180_1.png"></p>
+<ul>
+<li>上述模型的顺序代表了自回归模型的顺序（时间滞后的数量）、差异的程度（数据具有过去值的次数）和移动平均模型的顺序。</li>
+<li>周期顺序代表了模型的周期成分的顺序，包括AR参数、差异、MA参数和周期性。</li>
+<li>在我们的例子中，周期性是7，因为它是每日时间序列，每7天重复一次。</li>
+</ul>
+<p>rms = sqrt(mean_squared_error(valid.Count, y_hat_avg.SARIMA))<br>print(rms)<br>69.70093730473587</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predict=fit1.predict(start=<span class="string">"2014-9-26"</span>, end=<span class="string">"2015-4-26"</span>, dynamic=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>C:\Users\sodad\Anaconda3\lib\site-packages\statsmodels\tsa\statespace\kalman_filter.py:1740: ValueWarning: Dynamic prediction specified to begin during out-of-sample forecasting period, and so has no effect.
+  &apos; effect.&apos;, ValueWarning)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">test[<span class="string">'prediction'</span>]=predict</span><br><span class="line"><span class="comment"># Merge Test and test_original on day, month and year</span></span><br><span class="line">merge=pd.merge(test, test_org, on=(<span class="string">'day'</span>,<span class="string">'month'</span>, <span class="string">'year'</span>), how=<span class="string">'left'</span>)</span><br><span class="line">merge[<span class="string">'hour'</span>]=merge[<span class="string">'hour_y'</span>]</span><br><span class="line">merge=merge.drop([<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'Datetime'</span>,<span class="string">'hour_x'</span>,<span class="string">'hour_y'</span>], axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Predicting by merging merge and temp2</span></span><br><span class="line">prediction=pd.merge(merge, temp2, on=<span class="string">'hour'</span>, how=<span class="string">'left'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Converting the ratio to the original scale</span></span><br><span class="line">prediction[<span class="string">'Count'</span>]=prediction[<span class="string">'prediction'</span>]*prediction[<span class="string">'ratio'</span>]*<span class="number">24</span></span><br><span class="line"><span class="comment">#Let’s drop all variables other than ID and Count</span></span><br><span class="line">prediction[<span class="string">'ID'</span>]=prediction[<span class="string">'ID_y'</span>]</span><br><span class="line">submission=prediction.drop([<span class="string">'day'</span>,<span class="string">'hour'</span>,<span class="string">'ratio'</span>,<span class="string">'prediction'</span>, <span class="string">'ID_x'</span>, <span class="string">'ID_y'</span>],axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Converting the final submission to csv format</span></span><br><span class="line">pd.DataFrame(submission, columns=[<span class="string">'ID'</span>,<span class="string">'Count'</span>]).to_csv(<span class="string">'SARIMAX.csv'</span>)</span><br></pre></td></tr></table></figure>
+<p>这个方法给了我们最小的rmse分数。排行榜上的rmse是219.095。</p>
+<h3 id="我们还可以如何进一步提高我们的模型"><a href="#我们还可以如何进一步提高我们的模型" class="headerlink" title="我们还可以如何进一步提高我们的模型"></a>我们还可以如何进一步提高我们的模型</h3><ul>
+<li>你可以试着做一个每周的时间序列，并对这个系列进行预测，然后把这些预测发布到每天和每小时的预测中。</li>
+<li>使用模型（组合）的组合来减少rmse。要了解更多关于整体技术的内容你可以参考这些文章<ul>
+<li><a href="https://www.analyticsvidhya.com/blog/2015/08/introduction-ensemble-learning/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2015/08/introduction-ensemble-learning/</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2015/09/questions-ensemble-modeling/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2015/09/questions-ensemble-modeling/</a></li>
+</ul>
+</li>
+</ul>
+<p>To read further about the time series analysis you can refer these articles:</p>
+<ul>
+<li><a href="https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2016/02/time-series-forecasting-codes-python/</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/02/time-series-forecasting-methods/</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i>python</a>
+          
+            <a href="/tags/时间序列/" rel="tag"><i class="fa fa-tag"></i>时间序列</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/python学习记录1.html" rel="next" title="matplotlib中的多图层叠加的问题">
+                <i class="fa fa-chevron-left"></i> matplotlib中的多图层叠加的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Zhou Shu" />
+            
+              <p class="site-author-name" itemprop="name">Zhou Shu</p>
+              <p class="site-description motion-element" itemprop="description">Love data，Love Stefanie</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/sunsoda" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/a655f4d14f11" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用多种数据模型预测"><span class="nav-number">1.</span> <span class="nav-text">利用多种数据模型预测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#划分数据集：训练集-验证集"><span class="nav-number">1.1.</span> <span class="nav-text">划分数据集：训练集+验证集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建模技术"><span class="nav-number">1.2.</span> <span class="nav-text">建模技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素法Naive-Approach"><span class="nav-number">1.2.1.</span> <span class="nav-text">朴素法Naive Approach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动平均法-Moving-Average"><span class="nav-number">1.2.2.</span> <span class="nav-text">滑动平均法 Moving Average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单指数平滑法-Simple-Exponential-Smoothing"><span class="nav-number">1.2.3.</span> <span class="nav-text">简单指数平滑法 Simple Exponential Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Holts’s-Linear-Trend-Model-Holts’s-线性趋势模型"><span class="nav-number">1.2.4.</span> <span class="nav-text">Holts’s Linear Trend Model Holts’s 线性趋势模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Holt’s-Linear-Trend-Model"><span class="nav-number">1.3.</span> <span class="nav-text">Holt’s Linear Trend Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Holt-winter’s-model-on-daily-time-series"><span class="nav-number">1.4.</span> <span class="nav-text">Holt winter’s model on daily time series</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARIMA-model"><span class="nav-number">1.5.</span> <span class="nav-text">ARIMA model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.5.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARIMA模型的调试"><span class="nav-number">1.5.2.</span> <span class="nav-text">ARIMA模型的调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Stationarity-check"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">Stationarity check</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#去除趋势"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">去除趋势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除周期"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">移除周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用ARIMA来进行预测"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">利用ARIMA来进行预测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AR-model"><span class="nav-number">1.5.2.4.1.</span> <span class="nav-text">AR model</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MA-model"><span class="nav-number">1.5.2.4.1.1.</span> <span class="nav-text">MA model</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SARIMAX-model-on-daily-time-series"><span class="nav-number">1.5.3.</span> <span class="nav-text">SARIMAX model on daily time series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们还可以如何进一步提高我们的模型"><span class="nav-number">1.5.4.</span> <span class="nav-text">我们还可以如何进一步提高我们的模型</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhou Shu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'tbSIqm6vJD0lmYsdbEBLQv8D-gzGzoHsz',
+        appKey: 'LcrBXvsfoWB24rNCPvItksRW',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tbSIqm6vJD0lmYsdbEBLQv8D-gzGzoHsz", "LcrBXvsfoWB24rNCPvItksRW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
